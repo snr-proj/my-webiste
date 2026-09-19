@@ -1,0 +1,108 @@
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  transition: background 0.4s var(--ease-out), box-shadow 0.4s var(--ease-out), padding 0.4s var(--ease-out);
+  padding-block: 1.25rem;
+}
+
+.navbar--scrolled {
+  background: rgba(238, 239, 236, 0.85);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 2px 20px rgba(0, 0, 0, 0.06);
+  padding-block: 0.75rem;
+}
+
+.navbar__inner {
+  max-width: var(--container-width);
+  margin-inline: auto;
+  padding-inline: var(--section-padding-x);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.navbar__brand {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.05rem;
+  color: var(--color-white);
+  text-shadow: 0 1px 8px rgba(0, 0, 0, 0.35);
+  transition: color 0.4s var(--ease-out);
+}
+
+.navbar--scrolled .navbar__brand,
+.navbar--scrolled .navbar__links a {
+  color: var(--color-text);
+  text-shadow: none;
+}
+
+.navbar__links {
+  display: flex;
+  gap: 2rem;
+}
+
+.navbar__links a {
+  font-size: 0.92rem;
+  font-weight: 500;
+  color: var(--color-white);
+  text-shadow: 0 1px 8px rgba(0, 0, 0, 0.35);
+  position: relative;
+  padding-bottom: 2px;
+  transition: color 0.4s var(--ease-out);
+}
+
+.navbar__links a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 1.5px;
+  width: 0;
+  background: currentColor;
+  transition: width 0.3s var(--ease-out);
+}
+
+.navbar__links a:hover::after {
+  width: 100%;
+}
+
+.navbar__toggle {
+  display: none;
+  background: none;
+  border: none;
+  color: var(--color-white);
+  text-shadow: 0 1px 8px rgba(0, 0, 0, 0.35);
+  transition: color 0.4s var(--ease-out);
+}
+
+.navbar--scrolled .navbar__toggle {
+  color: var(--color-text);
+  text-shadow: none;
+}
+
+.navbar__mobile {
+  display: none;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 1rem var(--section-padding-x) 1.5rem;
+  overflow: hidden;
+  background: var(--color-bg);
+}
+
+@media (max-width: 820px) {
+  .navbar__links {
+    display: none;
+  }
+  .navbar__toggle {
+    display: block;
+  }
+  .navbar__mobile {
+    display: flex;
+  }
+}
